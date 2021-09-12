@@ -8,6 +8,9 @@ public class AddressBookMain {
 		    addressBook.display();
 		    addressBook.edit();
 		    addressBook.display();
+		    addressBook.delete();
+		    addressBook.display();
+		    
 		}
 	}
 
