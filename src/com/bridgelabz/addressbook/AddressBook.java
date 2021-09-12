@@ -1,22 +1,19 @@
 package com.bridgelabz.addressbook;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
+	private ArrayList<ContactPerson> contactBook = new ArrayList<ContactPerson>();
 	Scanner sc = new Scanner(System.in);
-	private ContactPerson contactBook[];
 	private static int numberOfConatcts = 0;
-	
-	AddressBook() {
-		this.contactBook = new ContactPerson[20];
-	}
 	
 	public void addContacts()
 	{
 		ContactPerson contactPerson = new ContactPerson();
 		String name = sc.next();
-		for(int i=0; contactBook[i]!= null;i++) {
-			if(contactBook[i].getFirstName().equals(name)) {
+		for(int i=0; contactBook.get(i).equals(null);i++) {
+			if(contactBook.get(i).getFirstName().equals(name)) {
 				System.out.println("the name is already taken");
 				return;
 			}
@@ -38,7 +35,7 @@ public class AddressBook {
 		int phoneNumber = sc.nextInt();
 		System.out.println("Enter Zip");
 		int zip = sc.nextInt();
-		contactBook[numberOfConatcts]= new ContactPerson(firstName, lastName, address, state, city, email, phoneNumber, zip);
+		contactBook.add(new ContactPerson(firstName, lastName, address, state, city, email, phoneNumber, zip));
 		numberOfConatcts++;
 	}
 	
@@ -51,7 +48,7 @@ public class AddressBook {
 		int choice = sc.nextInt();
 		int index =0;
 		for( index =0;index<numberOfConatcts;index++)
-		if(name.equals(contactBook[index].getFirstName()))
+		if(name.equals(contactBook.get(index).getFirstName()))
 		{
 			System.out.println("name exists , now enter the new details");
 			
@@ -65,37 +62,37 @@ public class AddressBook {
 		case 1:
 			System.out.println("Enter new First Name");
 			String newFirstName = sc.next();
-			contactBook[index].setFirstName(newFirstName);
+			contactBook.get(index).setFirstName(newFirstName);
 			break;
 		case 2:
 			System.out.println("Enter new Last Name");
 			String newLastName = sc.next();
-			contactBook[index].setLastName(newLastName);
+			contactBook.get(index).setLastName(newLastName);
 			break;
 		case 3:
 			System.out.println("Enter new City");
 			String newCity = sc.next();
-			contactBook[index].setCity(newCity);
+			contactBook.get(index).setCity(newCity);
 			break;
 		case 4:
 			System.out.println("Enter new State");
 			String newState = sc.next();
-			contactBook[index].setState(newState);
+			contactBook.get(index).setState(newState);
 			break;
 		case 5:
 			System.out.println("Enter new State");
 			int newZip = sc.nextInt();
-			contactBook[index].setZip(newZip);
+			contactBook.get(index).setZip(newZip);
 			break;
 		case 6:
 			System.out.println("Enter new Phone Number");
 			int newPNumber = sc.nextInt();
-			contactBook[index].setPhoneNumber(newPNumber);
+			contactBook.get(index).setPhoneNumber(newPNumber);
 			break;
 		case 7:
 			System.out.println("Enter new Email");
 			String newEmail = sc.next();
-			contactBook[index].setEmail(newEmail);
+			contactBook.get(index).setEmail(newEmail);
 			break;
 		}
 		
@@ -108,14 +105,14 @@ public class AddressBook {
 		System.out.println("Enter the name of the contact to delete");
 		String name = sc.next();
 		for( index=0;index<numberOfConatcts;index++) 
-			if(contactBook[index].getFirstName().equals(name)) {
+			if(contactBook.get(index).getFirstName().equals(name)) {
 				break;
 			}
-		while(contactBook[index+1]!= null) {
-			contactBook[index] = contactBook[index+1];
+		while(!contactBook.get(index+1).equals(null)) {
+			contactBook.set(index, contactBook.get(index+1));
 			index++;
 		}
-		contactBook[index] = null;
+		contactBook.set(index,null);
 		System.out.println("Deleted details of : "+ name);
 	}
 	
@@ -124,7 +121,7 @@ public class AddressBook {
 	{
 		for(int index =0 ;index<numberOfConatcts;index++)
 		{
-			System.out.println(contactBook[index]);
+			System.out.println(contactBook.get(index));
 		}
 	}
 
