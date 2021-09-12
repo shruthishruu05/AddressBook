@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -159,6 +160,26 @@ public class AddressBook {
 	            System.out.print(i.getKey() + ":");
 	            System.out.println(i.getValue());
 	       }
+			break;
+		}
+		
+	}
+	public void countOfPerson() {
+		System.out.println("Count Contacts by 1.State 2.City");
+		int choice = sc.nextInt();
+		switch (choice) {
+		case 1:
+			System.out.println("Enter State name:");
+			String stateName = sc.next();
+			int countState = Collections.frequency(new ArrayList<String>(contactByState.values()), stateName);
+			System.out.println("Number of Contacts in State "+stateName+" is "+countState);
+			break;
+
+		case 2:
+			System.out.println("Enter City name:");
+			String cityName = sc.next();
+			int countCity = Collections.frequency(new ArrayList<String>(contactByCity.values()), cityName);
+			System.out.println("Number of Contacts in State "+cityName+" is "+countCity);
 			break;
 		}
 		
