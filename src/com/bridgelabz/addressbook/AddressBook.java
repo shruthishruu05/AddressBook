@@ -95,6 +95,24 @@ public class AddressBook {
 		
 	}
 	
+	public void delete()
+	{
+		int index;
+		System.out.println("Enter the name of the contact to delete");
+		String name = sc.next();
+		for( index=0;index<numberOfConatcts;index++) 
+			if(contactBook[index].getFirstName().equals(name)) {
+				break;
+			}
+		while(contactBook[index+1]!= null) {
+			contactBook[index] = contactBook[index+1];
+			index++;
+		}
+		contactBook[index] = null;
+		System.out.println("Deleted details of : "+ name);
+	}
+	
+	
 	public void display()
 	{
 		for(int index =0 ;index<numberOfConatcts;index++)
