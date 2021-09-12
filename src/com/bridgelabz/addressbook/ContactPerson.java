@@ -20,6 +20,9 @@ public class ContactPerson {
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
 	}
+	public ContactPerson() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getFirstName() {
 		return firstName;
 	}
