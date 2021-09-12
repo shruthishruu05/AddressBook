@@ -17,7 +17,8 @@ public class AddressBookMain {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city or state 6:Switch Address Book");
+			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact."
+					+ " 5:seach userby city or state 6:View person by city or state 7:Switch Address Book ");
 			option  = sc.nextInt();
 			switch(option) {
 				case 1 :
@@ -36,6 +37,9 @@ public class AddressBookMain {
 					break;
 				case 5: 
 					addressBook.searchByCityOrState();
+					break;
+				case 6: 
+					addressBook.viewByCityOrState();
 					break;
 				default:
 					exit = false;
