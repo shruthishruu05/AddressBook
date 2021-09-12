@@ -13,6 +13,14 @@ public class AddressBook {
 	
 	public void addContacts()
 	{
+		ContactPerson contactPerson = new ContactPerson();
+		String name = sc.next();
+		for(int i=0; contactBook[i]!= null;i++) {
+			if(contactBook[i].getFirstName().equals(name)) {
+				System.out.println("the name is already taken");
+				return;
+			}
+		}
 
 		System.out.println("Enter first name:");
 		String firstName = sc.next();
