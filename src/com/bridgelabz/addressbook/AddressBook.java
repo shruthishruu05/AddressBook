@@ -1,10 +1,15 @@
 package com.bridgelabz.addressbook;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook {
 	private ArrayList<ContactPerson> contactBook = new ArrayList<ContactPerson>();
+	private Map<String, String> contactByState = new HashMap<String, String>();
+	private Map<String, String> contactByCity = new HashMap<String, String>();
 	Scanner sc = new Scanner(System.in);
 	private static int numberOfConatcts = 0;
 	
@@ -35,6 +40,8 @@ public class AddressBook {
 		System.out.println("Enter Zip");
 		int zip = sc.nextInt();
 		contactBook.add(new ContactPerson(firstName, lastName, address, state, city, email, phoneNumber, zip));
+		contactByCity.put(firstName, city);
+		contactByState.put(firstName, state);
 		numberOfConatcts++;
 	}
 	
@@ -134,6 +141,27 @@ public class AddressBook {
 		{
 			System.out.println(contactBook.get(index));
 		}
+	}
+
+	public void viewByCityOrState() {
+		System.out.println("View Person Details by 1.State 2.City");
+		int choice = sc.nextInt();
+		switch (choice) {
+		case 1:
+			 for (Map.Entry<String, String> i : contactByState.entrySet()) {
+		            System.out.print(i.getKey() + ":");
+		            System.out.println(i.getValue());
+		       }
+			break;
+
+		case 2:
+			for (Map.Entry<String, String> i : contactByCity.entrySet()) {
+	            System.out.print(i.getKey() + ":");
+	            System.out.println(i.getValue());
+	       }
+			break;
+		}
+		
 	}
 
 }
