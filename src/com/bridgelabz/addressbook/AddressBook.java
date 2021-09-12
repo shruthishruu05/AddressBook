@@ -13,8 +13,7 @@ public class AddressBook {
 	
 	public void addContacts()
 	{
-		System.out.println("Enter the Contact details-->");
-		System.out.println("Add Contact");
+
 		System.out.println("Enter first name:");
 		String firstName = sc.next();
 		System.out.println("Enter last name");
