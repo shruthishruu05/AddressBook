@@ -11,16 +11,15 @@ public class AddressBook {
 	public void addContacts()
 	{
 		ContactPerson contactPerson = new ContactPerson();
-		String name = sc.next();
-		for(int i=0; contactBook.get(i).equals(null);i++) {
-			if(contactBook.get(i).getFirstName().equals(name)) {
+		System.out.println("Enter the first name");
+		String firstName = sc.next();
+		for(int i=0; i<contactBook.size();i++) {
+			if(contactBook.get(i).getFirstName().equals(firstName)) {
 				System.out.println("the name is already taken");
 				return;
 			}
 		}
 
-		System.out.println("Enter first name:");
-		String firstName = sc.next();
 		System.out.println("Enter last name");
 		String lastName = sc.next();
 		System.out.println("Enter city");
@@ -114,6 +113,18 @@ public class AddressBook {
 		}
 		contactBook.set(index,null);
 		System.out.println("Deleted details of : "+ name);
+	}
+	public void searchByCityOrState()
+	{
+		System.out.println("enter the name of the city or state to perform search");
+		String cityOrState = sc.next();
+		for(int index=0;index<numberOfConatcts;index++) 
+		{
+			if(contactBook.get(index).getCity().equals(cityOrState)||contactBook.get(index).getState().equals(cityOrState))
+			{
+				System.out.println(contactBook.get(index));
+			}
+		}
 	}
 	
 	
